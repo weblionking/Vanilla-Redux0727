@@ -1,71 +1,46 @@
-
-
-var products = [
-    {
-        id:1,
-        name:"iPad 4 Mini" ,
-        price: 500.01,
-        num:10
-    },
-    {
-        id:2,
-        name:   "H&M T-Shirt White",
-        price: 10.99,
-        num: 10
-    },
-    {
-        id:3,
-        name:"Charli XCX - Sucker CD",
-        price:19.99,
-        num:10
-    } 
-]
-
-function initValue() {
-    document.getElementById('num1').innerHTML = products[0].num;
-    document.getElementById('num2').innerHTML = products[1].num;
-    document.getElementById('num3').innerHTML = products[2].num;
-    document.getElementById("total").innerHTML = "0.00";
+/////////////////////////////////////////////////////////////////////////// 
+//UI
+function getCount() {
+    return parseInt(document.getElementById('count').innerHTML);
 }
 
-function addCart(product) {
+function drawCart(states) {
+    var statesContent = '';
+    states.forEach(state => {
+        statesContent = statesContent + '<div>' + '<h3>' + state + '</h3>' + '</div>';
+    });
 
-    var ctrl = document.getElementById("num" + product.id);
-    var current = parseInt(ctrl.innerHTML);
-    if(current <= 0) return;
-    ctrl.innerHTML--;
-    
-    var totalctrl = document.getElementById("total");
-    totalctrl.innerHTML = (parseFloat(totalctrl.innerHTML) + product.price).toFixed(2);
-
+    document.getElementById('myCart').innerHTML = statesContent;
+    if(states.length > 0) {
+        document.getElementById('count').innerHTML = states[states.length - 1];
+    }
+        
 }
 /////////////////////////////////////////////////////////////////////////// 
 //Redux
-const store = Redux.createStore(mainReducer);
- 
- function onAdd(id) {
-    store.dispatch(addToCart(products[id-1]));
+const store = Redux.createStore(cartReducer);
+
+function onIncrement() {
+    store.dispatch(actionIncrement(getCount()));
 }
 
-function reset() {
-    store.dispatch(checkOut());
+function onDecrement() {
+    store.dispatch(actionDecrement(getCount()));
 }
 
-function ondraw() {
-
-    var action = store.getState();
-    switch(action.type){
-        case CHECKOUT:
-            initValue();
-            break;
-        case ADD_CART:
-            addCart(action.product);
-            break;
-        default:
-            break;
-    }
+function onReset() {
+    store.dispatch(actionReset());
 }
 
-store.subscribe(ondraw);
+function onFormat() {
+    store.dispatch(actionFormat());
+}
+
+function onUpdate() {
+    var states = store.getState();
+    drawCart(states);
+}
+
+store.subscribe(onUpdate);
 /////////////////////////////////////////////////////////////////////////////////////
 

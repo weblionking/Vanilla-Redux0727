@@ -1,17 +1,28 @@
-//import {CHECKOUT, ADD_CART} from './actions'
+const INCREMENT_OFFSET = 1;
+const DECREMENT_OFFSET = -1;
+const RESET_OFFSET = 0;
 
+const defaultState = [];
 
-function mainReducer(state = CHECKOUT, action) {
+function cartReducer(state = defaultState, action) {
     switch(action.type) {
-        case CHECKOUT:
-            return {
-                type: CHECKOUT
-            };
-        case ADD_CART:
-            return {
-                    type: ADD_CART,
-                    product : action.product
-                };
+        case 'INCREMENT':
+            return [
+                ...state,
+                action.currentCount + INCREMENT_OFFSET
+            ];
+        case 'DECREMENT':
+            return [
+                ...state,
+                action.currentCount + DECREMENT_OFFSET
+            ];
+        case 'RESET':
+            return [
+                ...state,
+                RESET_OFFSET
+            ];
+        case 'FORMAT':
+            return defaultState;
         default:
             return state;
     }

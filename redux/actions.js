@@ -1,17 +1,30 @@
- const ADD_CART = "add cart";
- const CHECKOUT = "checkout";
+const INCREMENT = "INCREMENT";
+const DECREMENT = "DECREMENT";
+const RESET = "RESET";
+const FORMAT = "FORMAT";
 
-
- function addToCart(product) {
-    
+function actionIncrement(count) {
     return {
-        type: ADD_CART,
-        product : product
+        type: INCREMENT,
+        currentCount: count
     }
 }
 
- function checkOut() {
+function actionDecrement(count) {
     return {
-        type: CHECKOUT,
+        type: DECREMENT,
+        currentCount: count
+    }
+}
+
+function actionReset() {
+    return {
+        type: RESET
+    }
+}
+
+function actionFormat() {
+    return {
+        type: FORMAT
     }
 }

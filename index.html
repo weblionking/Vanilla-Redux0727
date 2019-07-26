@@ -14,26 +14,22 @@
 
     <body>
 
-        <div>
-            <h1>Shopping Cart Example</h1>
-            <hr>
-            <h2>Products</h2>
-            <h3>iPad 4 Mini - $500.01 x <span id="num1">10</span></h3>
-            <button id="add1" onclick="onAdd(1)">Add to cart</button>
-            <h3>H&M T-Shirt White - $10.99 x <span id="num2">10</span></h3>
-            <button id="add2" onclick="onAdd(2)">Add to cart</button>
-            <h3>Charli XCX - Sucker CD- $19.99 x <span id="num3">10</span></h3>
-            <button id="add3" onclick="onAdd(3)">Add to cart</button>
-
-            <hr>
+        <section>
+            <div>
+                <h1>Shopping Cart Example</h1>
+                <hr>
+                <button onclick="onDecrement();" style="display:inline">-</button>
+                <h3 id="count" style="display:inline;">10</h3>
+                <button onclick="onIncrement()" style="display:inline">+</button>
+            </div>
+            <hr />         
+        </section>
+        <section>
+            <button onclick="onReset()">Checkout</button>
+            <button onclick="onFormat()">Format</button>
             <h2>Your Cart</h2>
-            <h3><i>Please add some products to cart.</i></h3>
-            <h3>Total: $<span id="total">0.00</span></h3>
-
-            <button id="reset" onclick="reset()">Checkout</button>
-            
-        </div>
-
+            <div id="myCart"></div>
+        </section>
         
     </body>
 </html>
