@@ -1,0 +1,39 @@
+
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Vanilla & Redux</title>
+
+        <link rel="stylesheet" href="css/main.css"/>
+        <script src="https://npmcdn.com/redux@latest/dist/redux.min.js"></script>
+        <script src="./redux/actions.js"></script>
+        <script src="./redux/reducers.js"></script>
+        <script src="./redux/index.js"></script>
+    </head>
+
+    <body>
+
+        <div>
+            <h1>Shopping Cart Example</h1>
+            <hr>
+            <h2>Products</h2>
+            <h3>iPad 4 Mini - $500.01 x <span id="num1">10</span></h3>
+            <button id="add1" onclick="onAdd(1)">Add to cart</button>
+            <h3>H&M T-Shirt White - $10.99 x <span id="num2">10</span></h3>
+            <button id="add2" onclick="onAdd(2)">Add to cart</button>
+            <h3>Charli XCX - Sucker CD- $19.99 x <span id="num3">10</span></h3>
+            <button id="add3" onclick="onAdd(3)">Add to cart</button>
+
+            <hr>
+            <h2>Your Cart</h2>
+            <h3><i>Please add some products to cart.</i></h3>
+            <h3>Total: $<span id="total">0.00</span></h3>
+
+            <button id="reset" onclick="reset()">Checkout</button>
+            
+        </div>
+
+        
+    </body>
+</html>
